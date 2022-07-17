@@ -11,7 +11,13 @@ class _YourPhoneUIState extends State<YourPhoneUI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green,
+      appBar: AppBar(
+        backgroundColor: Colors.green[800],
+        title: Text(
+          'Add/Edit Phone',
+        ),
+        centerTitle: true,
+      ),
     );
   }
 }
