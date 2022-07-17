@@ -16,6 +16,10 @@
 	<string>my_profile_app</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Use Proto Libary for user profile xxxx.....</string>
+	<key>NSCameraUsageDescription </key>
+	<string>Use Camera for user profile xxxx.....</string>
 	<key>CFBundleShortVersionString</key>
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
