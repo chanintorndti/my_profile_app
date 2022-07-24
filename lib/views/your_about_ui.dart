@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class YourAboutUI extends StatefulWidget {
   const YourAboutUI({Key? key}) : super(key: key);
@@ -10,6 +11,15 @@ class YourAboutUI extends StatefulWidget {
 
 class _YourAboutUIState extends State<YourAboutUI> {
   TextEditingController aboutCtrl = TextEditingController(text: '');
+
+  //สร้างเมธอดบันทึกข้อมูลลง SharePreferences
+  //รีเทรินเป็น Future เพื่อที่เมื่อบันทึกเสร็จเราจะให้ทำงานต่อโดยการย้อนกลับไปหน้าแรก
+  Future addYourAboutToSF() async {
+    //เริ่มจากสร้าง object ของ SharedPreferences
+    SharedPreferences prefer = await SharedPreferences.getInstance();
+    //ทำการบันทึกลง SharedPreferences
+    prefer.setString('yourabout', aboutCtrl.text);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +107,9 @@ class _YourAboutUIState extends State<YourAboutUI> {
                   );
                 } else {
                   //บันทึกสิ่งที่ป้อนลง SharePreference แล้วกลับไปหน้า HomeUI
-
+                  addYourAboutToSF().then((value) {
+                    Navigator.pop(context);
+                  });
                 }
               },
               child: Text(
